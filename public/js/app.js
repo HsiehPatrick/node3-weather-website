@@ -15,7 +15,8 @@ weatherForm.addEventListener('submit', (e) => { // e for eventobject (how to acc
 
     //Fetch is client side javascript.
     //string url to fetch data from .then is the 'callback function' for fetch
-    fetch('http://localhost:3000/weather?address=' + location).then((response) => {
+    // '/' on local will use the current domain (localhost:3000 if on local, and herokuURL) and adding on the page after for the query.
+    fetch('/weather?address=' + location).then((response) => {
         response.json().then((data) => {
             if(data.error) {
                 messageOne.textContent = data.error;

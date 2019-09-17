@@ -8,6 +8,10 @@ const geoCode = require('./utils/geocode');
 const forecast = require('./utils/forecast');
 
 const app = express();
+const port = process.env.PORT || 3000; 
+/*Heroku provides PORT number on OS level. PORT changes over time and can be accessed at process.env.PORT (env stands for environment)
+can use logical operator || 'or' for starting up project on local (process.env.PORT is not provided on local)
+*/
 
 //Define paths for Express config
 const publicDirPath = path.join(__dirname, '../public');
@@ -110,6 +114,6 @@ app.get('*', (req, res) => { // use * in url section for all other routes/subdom
 
 });
 
-app.listen(3000, () => {//starts to listen aka starts server. takes argument a port, and callback function. Common dev port is 3000.
-    console.log('Server is up on port 3000');
+app.listen(port, () => {//starts to listen aka starts server. takes argument a port, and callback function. Common dev port is 3000.
+    console.log('Server is up on port ' + port);
 });
